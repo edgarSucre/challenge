@@ -98,6 +98,25 @@ func TestMinimumValueToGetPositiveSum(t *testing.T) {
 	}
 }
 
+func TestMaximumScoreAfterSplittingString(t *testing.T) {
+	tests := []struct {
+		s        string
+		expected int
+	}{
+		{"011101", 5},
+		{"00111", 5},
+		{"1111", 3},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.s, func(t *testing.T) {
+			actual := array.MaximumScoreAfterSplittingString(tt.s)
+
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
+
 func TestRangeSumQuery(t *testing.T) {
 	nums := []int{-2, 0, 3, -5, 2, -1}
 
