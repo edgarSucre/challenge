@@ -79,6 +79,10 @@ func MinimumValueToGetPositiveSum(nums []int) int {
 	return 1 - min
 }
 
+func MaximumScoreAfterSplittingString(s string) int {
+	return 0
+}
+
 /*
 Similar problem statements:
 Find the max length subarray which sums to a desired sum.
