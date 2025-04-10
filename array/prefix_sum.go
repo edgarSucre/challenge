@@ -23,7 +23,13 @@ func MinimumValueToGetPositiveSum(nums []int) int {
 	return 0
 }
 
+// Pattern: prefix-sum
+// Source: LeetCode 1422 - https://leetcode.com/problems/maximum-score-after-splitting-a-string/description/
 func MaximumScoreAfterSplittingString(s string) int {
+	return 0
+}
+
+func SumAllOddLengthSubarrays(nums []int) int {
 	return 0
 }
 

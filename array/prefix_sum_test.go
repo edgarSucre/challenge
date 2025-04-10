@@ -117,6 +117,34 @@ func TestMaximumScoreAfterSplittingString(t *testing.T) {
 	}
 }
 
+func TestSumAllOddLengthSubarrays(t *testing.T) {
+	tests := []struct {
+		nums     []int
+		expected int
+	}{
+		{
+			[]int{1, 4, 2, 5, 3},
+			58,
+		},
+		{
+			[]int{1, 2},
+			3,
+		},
+		{
+			[]int{10, 11, 12},
+			66,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(fmt.Sprintf("%+v", tt.nums), func(t *testing.T) {
+			actual := array.SumAllOddLengthSubarrays(tt.nums)
+
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
+
 func TestRangeSumQuery(t *testing.T) {
 	nums := []int{-2, 0, 3, -5, 2, -1}
 
