@@ -70,6 +70,34 @@ func TestFindPivotIndex(t *testing.T) {
 	}
 }
 
+func TestMinimumValueToGetPositiveSum(t *testing.T) {
+	tests := []struct {
+		nums     []int
+		expected int
+	}{
+		{
+			[]int{-3, 2, -3, 4, 2},
+			5,
+		},
+		{
+			[]int{1, 2},
+			1,
+		},
+		{
+			[]int{1, -2, -3},
+			5,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(fmt.Sprintf("%+v", tt.nums), func(t *testing.T) {
+			actual := array.MinimumValueToGetPositiveSum(tt.nums)
+
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
+
 func TestRangeSumQuery(t *testing.T) {
 	nums := []int{-2, 0, 3, -5, 2, -1}
 

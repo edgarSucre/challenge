@@ -17,6 +17,12 @@ func FindPivotIndex(nums []int) int {
 	return 0
 }
 
+// Pattern: prefix-sum
+// Source: LeetCode 1413 - https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/description/
+func MinimumValueToGetPositiveSum(nums []int) int {
+	return 0
+}
+
 /*
 Similar problem statements:
 Find the max length subarray which sums to a desired sum.
