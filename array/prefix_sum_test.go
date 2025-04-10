@@ -8,6 +8,36 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestTwoSum(t *testing.T) {
+	testCases := []struct {
+		nums     []int
+		target   int
+		expected []int
+	}{
+		{
+			nums:     []int{2, 7, 11, 15},
+			target:   9,
+			expected: []int{0, 1},
+		},
+		{
+			nums:     []int{3, 2, 4},
+			target:   6,
+			expected: []int{1, 2},
+		},
+		{
+			nums:     []int{3, 3},
+			target:   6,
+			expected: []int{0, 1},
+		},
+	}
+
+	for _, tc := range testCases {
+		actual := array.TwoSum(tc.nums, tc.target)
+
+		assert.ElementsMatch(t, tc.expected, actual)
+	}
+}
+
 func TestFindPivotIndex(t *testing.T) {
 	tests := []struct {
 		nums     []int
@@ -40,33 +70,31 @@ func TestFindPivotIndex(t *testing.T) {
 	}
 }
 
-func TestTwoSum(t *testing.T) {
-	testCases := []struct {
+func TestMinimumValueToGetPositiveSum(t *testing.T) {
+	tests := []struct {
 		nums     []int
-		target   int
-		expected []int
+		expected int
 	}{
 		{
-			nums:     []int{2, 7, 11, 15},
-			target:   9,
-			expected: []int{0, 1},
+			[]int{-3, 2, -3, 4, 2},
+			5,
 		},
 		{
-			nums:     []int{3, 2, 4},
-			target:   6,
-			expected: []int{1, 2},
+			[]int{1, 2},
+			1,
 		},
 		{
-			nums:     []int{3, 3},
-			target:   6,
-			expected: []int{0, 1},
+			[]int{1, -2, -3},
+			5,
 		},
 	}
 
-	for _, tc := range testCases {
-		actual := array.TwoSum(tc.nums, tc.target)
+	for _, tt := range tests {
+		t.Run(fmt.Sprintf("%+v", tt.nums), func(t *testing.T) {
+			actual := array.MinimumValueToGetPositiveSum(tt.nums)
 
-		assert.ElementsMatch(t, tc.expected, actual)
+			assert.Equal(t, tt.expected, actual)
+		})
 	}
 }
 
