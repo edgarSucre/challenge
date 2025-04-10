@@ -1,0 +1,224 @@
+package array
+
+// Pattern: prefix-sum
+// Source: https://leetcode.com/problems/two-sum/description/
+func TwoSum(nums []int, target int) []int {
+	prefix := map[int]int{}
+
+	for i, v := range nums {
+		if index, ok := prefix[v]; ok {
+			return []int{index, i}
+		}
+
+		prefix[target-v] = i
+	}
+
+	return []int{}
+}
+
+// Pattern: prefix-sum
+// Source: LeetCode 303 - https://leetcode.com/problems/range-sum-query-immutable/description/
+func RangeSumQuery(nums []int, left, right int) int {
+	prefix := make([]int, len(nums))
+
+	var sum int
+
+	for i, v := range nums {
+		sum += v
+
+		prefix[i] = sum
+	}
+
+	if left == 0 {
+		return prefix[right]
+	}
+
+	return prefix[right] - prefix[left-1]
+}
+
+// Source: LeetCode 724 - https://leetcode.com/problems/find-pivot-index/description/
+func FindPivotIndex(nums []int) int {
+	var left, right int
+
+	n := len(nums) - 1
+
+	for _, v := range nums {
+		right += v
+	}
+
+	if right == nums[n] {
+		return n
+	}
+
+	for i, v := range nums {
+		right -= v
+
+		if left == right {
+			return i
+		}
+
+		left += v
+	}
+
+	return -1
+}
+
+/*
+Similar problem statements:
+Find the max length subarray which sums to a desired sum.
+Find the max length subarray which sums to a 0.
+Find the max length subarray which has equal numbers of odd and even numbers.
+Find the max length subarray which has equal numbers of 0 and 1s
+
+Pattern: prefix-sum, map
+Source: LeetCode 525 - https://leetcode.com/problems/contiguous-array/description/
+*/
+func ContiguousArray(nums []int) int {
+	var count, max int
+	prefix := map[int]int{0: -1}
+
+	for i, v := range nums {
+		if v == 0 {
+			count--
+		} else {
+			count++
+		}
+
+		if index, ok := prefix[count]; ok {
+			contiguous := i - index
+
+			if contiguous > max {
+				max = contiguous
+			}
+		} else {
+			prefix[count] = i
+		}
+	}
+
+	return max
+}
+
+// Pattern: prefix-sum, map
+// Source: LeetCode 560 - https://leetcode.com/problems/subarray-sum-equals-k/description/
+func SubarraySumEqualsK(nums []int, k int) int {
+	var count, sum int
+	prefix := map[int]int{0: 1}
+
+	for _, v := range nums {
+		sum += v
+
+		count += prefix[sum-k]
+		prefix[sum]++
+	}
+
+	return count
+}
+
+// Pattern: prefix-sum, map
+// Source: LeetCode 523 - https://leetcode.com/problems/continuous-subarray-sum/description/
+func ContinuousSubArraySum(nums []int, k int) bool {
+	var sum int
+
+	prefix := map[int]int{0: -1}
+
+	for i, v := range nums {
+		sum += v
+		remainder := sum % k
+
+		if index, ok := prefix[remainder]; ok {
+			if i-index >= 2 {
+				return true
+			}
+		} else {
+			prefix[remainder] = i
+		}
+	}
+
+	return false
+}
+
+// Pattern: prefix-sum, map
+// Source: LeetCode 974 - https://leetcode.com/problems/subarray-sums-divisible-by-k/description/
+func SubarraySumsDivisibleByK(nums []int, k int) int {
+	var count, sum int
+
+	prefix := map[int]int{0: 1}
+
+	for _, v := range nums {
+		sum += v
+		remainder := sum % k
+
+		if remainder < 0 {
+			remainder += k
+		}
+
+		count += prefix[remainder]
+		prefix[remainder]++
+	}
+
+	return count
+}
+
+// Pattern: prefix-sum, map, maximum subarray
+// Source: LeetCode 1658 - https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/description/
+func MinimumOperationsToReduceXtoZero(nums []int, k int) int {
+	var sum, sumK, max int
+
+	prefix := map[int]int{0: -1}
+
+	for _, v := range nums {
+		sumK += v
+	}
+
+	sumK -= k
+
+	for i, v := range nums {
+		sum += v
+
+		if index, ok := prefix[sum-sumK]; ok {
+			sub := i - index
+
+			if sub > max {
+				max = sub
+			}
+		}
+
+		prefix[sum] = i
+	}
+
+	if max > 0 {
+		return len(nums) - max
+	}
+
+	return -1
+}
+
+func KRadiusSubarrayAverages(nums []int, k int) []int {
+	res := make([]int, len(nums))
+
+	var sum, left int
+
+	for right, v := range nums {
+		sum += v
+
+		if right < k {
+			res[right] = -1
+			continue
+		}
+
+		if len(nums)-right <= k {
+			res[right] = -1
+		}
+
+		index := right - k
+
+		if left == right-(k*2) {
+			res[index] = sum / (k*2 + 1)
+
+			sum -= nums[left]
+			left++
+		}
+	}
+
+	return res
+}
