@@ -80,7 +80,28 @@ func MinimumValueToGetPositiveSum(nums []int) int {
 }
 
 func MaximumScoreAfterSplittingString(s string) int {
-	return 0
+	var max, zeros, ones int
+
+	for _, v := range s {
+		if v == '1' {
+			ones++
+		}
+	}
+
+	for _, v := range s {
+		if v == '0' {
+			zeros++
+		} else {
+			ones--
+		}
+
+		count := zeros + ones
+		if count > max {
+			max = count
+		}
+	}
+
+	return max
 }
 
 /*
