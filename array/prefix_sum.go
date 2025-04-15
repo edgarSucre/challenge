@@ -106,8 +106,18 @@ func MaximumScoreAfterSplittingString(s string) int {
 	return max
 }
 
+// this belongs somewhere else
 func SumAllOddLengthSubarrays(nums []int) int {
-	return 0
+	var sum int
+
+	n := len(nums)
+
+	for i, v := range nums {
+		count := (((i+1)*(n-i) + 1) / 2)
+		sum += v * count
+	}
+
+	return sum
 }
 
 /*
