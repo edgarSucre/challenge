@@ -121,7 +121,31 @@ func SumAllOddLengthSubarrays(nums []int) int {
 }
 
 func MaximumPopulationYear(logs [][]int) int {
-	return 0
+	var max, res int
+
+	for i := 0; i < len(logs); i++ {
+		current := logs[i]
+		alive := 1
+
+		for j := 0; j < i; j++ {
+			born, died := logs[j][0], logs[j][1]
+
+			if isAlive(born, died, current[0]) {
+				alive++
+			}
+		}
+
+		if alive > max {
+			max = alive
+			res = current[0]
+		}
+	}
+
+	return res
+}
+
+func isAlive(born, died, current int) bool {
+	return born <= current && current < died
 }
 
 /*
