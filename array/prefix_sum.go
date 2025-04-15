@@ -120,6 +120,10 @@ func SumAllOddLengthSubarrays(nums []int) int {
 	return sum
 }
 
+func MaximumPopulationYear(logs [][]int) int {
+	return 0
+}
+
 /*
 Similar problem statements:
 Find the max length subarray which sums to a desired sum.
