@@ -167,6 +167,37 @@ func TestRangeSumQuery(t *testing.T) {
 	}
 }
 
+func TestMaximumPopulationYear(t *testing.T) {
+	tests := []struct {
+		logs     [][]int
+		expected int
+	}{
+		{
+			[][]int{
+				{1993, 1999},
+				{2000, 2010},
+			},
+			1993,
+		},
+		{
+			[][]int{
+				{1950, 1961},
+				{1960, 1971},
+				{1970, 1981},
+			},
+			1960,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(fmt.Sprintf("%+v", tt.logs), func(t *testing.T) {
+			actual := array.MaximumPopulationYear(tt.logs)
+
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
+
 func TestContiguousArray(t *testing.T) {
 	tests := []struct {
 		nums     []int
