@@ -144,12 +144,27 @@ func MaximumPopulationYear(logs [][]int) int {
 	return res
 }
 
-func isAlive(born, died, current int) bool {
-	return born <= current && current < died
-}
-
 func CheckIfAllIntegersInRange(nums [][]int, left, right int) bool {
-	return false
+	prefix := make([]int, 50)
+
+	for _, v := range nums {
+		start, end := v[0], v[1]+1
+
+		prefix[start]++
+		prefix[end]--
+	}
+
+	for i := 1; i < 50; i++ {
+		prefix[i] += prefix[i-1]
+	}
+
+	for i := left; i <= right; i++ {
+		if prefix[i] < 1 {
+			return false
+		}
+	}
+
+	return true
 }
 
 /*
