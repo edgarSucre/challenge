@@ -120,6 +120,8 @@ func SumAllOddLengthSubarrays(nums []int) int {
 	return sum
 }
 
+// Pattern: prefix-sum, carry-on
+// Source: LeetCode 1854 - https://leetcode.com/problems/maximum-population-year/description/
 func MaximumPopulationYear(logs [][]int) int {
 	const end = 2050
 	const start = 1950
@@ -144,6 +146,8 @@ func MaximumPopulationYear(logs [][]int) int {
 	return res
 }
 
+// Pattern: prefix-sum, carry-on
+// Source: LeetCode 1893 - https://leetcode.com/problems/check-if-all-the-integers-in-a-range-are-covered/description/
 func CheckIfAllIntegersInRange(nums [][]int, left, right int) bool {
 	prefix := make([]int, 50)
 
@@ -165,6 +169,10 @@ func CheckIfAllIntegersInRange(nums [][]int, left, right int) bool {
 	}
 
 	return true
+}
+
+func FindMiddleIndex(nums []int) int {
+	return 0
 }
 
 /*

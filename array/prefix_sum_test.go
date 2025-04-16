@@ -235,6 +235,34 @@ func TestCheckIfAllIntegersInRange(t *testing.T) {
 	}
 }
 
+func TestFindMiddleIndex(t *testing.T) {
+	tests := []struct {
+		nums     []int
+		expected int
+	}{
+		{
+			[]int{2, 3, -1, 8, 4},
+			3,
+		},
+		{
+			[]int{1, -1, 4},
+			2,
+		},
+		{
+			[]int{2, 5},
+			-1,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(fmt.Sprintf("%+v", tt.nums), func(t *testing.T) {
+			actual := array.FindMiddleIndex(tt.nums)
+
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
+
 func TestContiguousArray(t *testing.T) {
 	tests := []struct {
 		nums     []int
