@@ -171,8 +171,28 @@ func CheckIfAllIntegersInRange(nums [][]int, left, right int) bool {
 	return true
 }
 
+// Pattern: prefix-sum
+// Source: LeetCode 1893 - https://leetcode.com/problems/check-if-all-the-integers-in-a-range-are-covered/description/
 func FindMiddleIndex(nums []int) int {
-	return 0
+	var rightSum int
+
+	for _, v := range nums {
+		rightSum += v
+	}
+
+	var leftSum int
+
+	for i, v := range nums {
+		rightSum -= v
+
+		if leftSum == rightSum {
+			return i
+		}
+
+		leftSum += v
+	}
+
+	return -1
 }
 
 /*
