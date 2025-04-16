@@ -33,12 +33,20 @@ func SumAllOddLengthSubarrays(nums []int) int {
 	return 0
 }
 
+// Pattern: prefix-sum, carry-on
+// Source: LeetCode 1854 - https://leetcode.com/problems/maximum-population-year/description/
 func MaximumPopulationYear(logs [][]int) int {
 	return 0
 }
 
+// Pattern: prefix-sum, carry-on
+// Source: LeetCode 1893 - https://leetcode.com/problems/check-if-all-the-integers-in-a-range-are-covered/description/
 func CheckIfAllIntegersInRange(nums [][]int, left, right int) bool {
 	return false
+}
+
+func FindMiddleIndex(nums []int) int {
+	return 0
 }
 
 /*
