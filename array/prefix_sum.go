@@ -37,6 +37,10 @@ func MaximumPopulationYear(logs [][]int) int {
 	return 0
 }
 
+func CheckIfAllIntegersInRange(nums [][]int, left, right int) bool {
+	return false
+}
+
 /*
 Similar problem statements:
 Find the max length subarray which sums to a desired sum.
