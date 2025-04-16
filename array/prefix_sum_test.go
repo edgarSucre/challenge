@@ -198,6 +198,43 @@ func TestMaximumPopulationYear(t *testing.T) {
 	}
 }
 
+func TestCheckIfAllIntegersInRange(t *testing.T) {
+	tests := []struct {
+		nums     [][]int
+		left     int
+		right    int
+		expected bool
+	}{
+		{
+			[][]int{
+				{1, 2},
+				{3, 4},
+				{5, 6},
+			},
+			2,
+			5,
+			true,
+		},
+		{
+			[][]int{
+				{1, 10},
+				{10, 20},
+			},
+			21,
+			21,
+			false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(fmt.Sprintf("%+v", tt.nums), func(t *testing.T) {
+			actual := array.CheckIfAllIntegersInRange(tt.nums, tt.left, tt.right)
+
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
+
 func TestContiguousArray(t *testing.T) {
 	tests := []struct {
 		nums     []int
