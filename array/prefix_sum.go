@@ -354,3 +354,9 @@ func KRadiusSubarrayAverages(nums []int, k int) []int {
 
 	return res
 }
+
+func MaxAverage(list [][]int) int {
+	var sol int
+
+	return sol
+}
