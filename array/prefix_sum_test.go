@@ -440,3 +440,17 @@ func TestKRadiusSubarrayAverages(t *testing.T) {
 		})
 	}
 }
+
+func TestMaxAverage(t *testing.T) {
+	r := array.MaxAverage([][]int{
+		{2, 4},
+		{2, 10},
+		{3, 5},
+		{3, 7},
+		{5, 4},
+		{5, 8},
+		{5, 9},
+	})
+
+	assert.Equal(t, 5, r)
+}

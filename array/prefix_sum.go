@@ -90,3 +90,9 @@ func MinimumOperationsToReduceXtoZero(nums []int, k int) int {
 func KRadiusSubarrayAverages(nums []int, k int) []int {
 	return []int{}
 }
+
+func MaxAverage(list [][]int) int {
+	var sol int
+
+	return sol
+}
