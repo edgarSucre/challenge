@@ -356,7 +356,28 @@ func KRadiusSubarrayAverages(nums []int, k int) []int {
 }
 
 func MaxAverage(list [][]int) int {
+	sumIndex := map[int]int{}
+	countIndex := map[int]int{}
+
+	for _, classGrade := range list {
+		sumIndex[classGrade[0]] += classGrade[1]
+		countIndex[classGrade[0]]++
+	}
+
+	var maxAvg float64
 	var sol int
+
+	for subject, scoreSum := range sumIndex {
+		count := float64(countIndex[subject])
+		avg := float64(scoreSum) / count
+
+		if maxAvg == avg && sol < subject {
+			sol = subject
+		} else if avg > maxAvg {
+			sol = subject
+			maxAvg = avg
+		}
+	}
 
 	return sol
 }
