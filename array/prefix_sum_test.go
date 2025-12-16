@@ -454,3 +454,59 @@ func TestMaxAverage(t *testing.T) {
 
 	assert.Equal(t, 5, r)
 }
+
+func TestMinSubArrayLen(t *testing.T) {
+	tests := []struct {
+		nums     []int
+		target   int
+		expected int
+	}{
+		{
+			[]int{2, 3, 1, 2, 4, 3},
+			7,
+			2,
+		},
+		{
+			[]int{1, 4, 4},
+			4,
+			1,
+		},
+		{
+			[]int{1, 1, 1, 1, 1, 1, 1, 1},
+			11,
+			0,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(fmt.Sprintf("%+v", tt.nums), func(t *testing.T) {
+			actual := array.MinSubArrayLen(tt.nums, tt.target)
+
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
+
+func TestProductsExceptSelf(t *testing.T) {
+	tests := []struct {
+		nums     []int
+		expected []int
+	}{
+		{
+			[]int{1, 2, 3, 4},
+			[]int{24, 12, 8, 6},
+		},
+		{
+			[]int{-1, 1, 0, -3, 3},
+			[]int{0, 0, 9, 0, 0},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(fmt.Sprintf("%+v", tt.nums), func(t *testing.T) {
+			actual := array.ProductExceptSelf(tt.nums)
+
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
