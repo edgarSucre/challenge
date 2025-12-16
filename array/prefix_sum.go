@@ -325,6 +325,14 @@ func MinimumOperationsToReduceXtoZero(nums []int, k int) int {
 	return -1
 }
 
+func MinSubArrayLen(nums []int, target int) int {
+	return 0
+}
+
+func ProductExceptSelf(nums []int) []int {
+	return []int{}
+}
+
 func KRadiusSubarrayAverages(nums []int, k int) []int {
 	res := make([]int, len(nums))
 
