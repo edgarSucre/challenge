@@ -19,6 +19,10 @@ func TestLongestPrefix(t *testing.T) {
 			[]string{"dog", "racecar", "car"},
 			"",
 		},
+		{
+			[]string{"geeksforgeeks", "geeks", "geek", "geezer"},
+			"gee",
+		},
 	}
 
 	for _, tc := range testCases {
